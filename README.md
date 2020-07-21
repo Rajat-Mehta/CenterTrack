@@ -135,6 +135,18 @@ for img in images:
 ~~~
 Each `ret` will be a list dict: `[{'bbox': [x1, y1, x2, y2], 'tracking_id': id, ...}]`
 
+## Training on Kitti:
+~~~_tracking
+python main.py tracking --exp_id kitti_fulltrain --dataset kitti_tracking --dataset_version train --pre_hm --same_aug --hm_disturb 0.05 --lost_disturb 0.2 -- fp_disturb 0.1 --batch_size 4 --load_model ../models/nuScenes_3Ddetection_e140.pth --gpus 2,3
+~~~
+
+## Demo of Kitti datasest
+~~~
+python demo.py tracking --load_model ../models/kitti_track.pth --track_thresh 0.1 --demo ../data/kitti_tracking/data_tracking_image_2/testing/image_02/0010 --num_classes 3 --dataset kitti_tracking --save_video
+
+~~~
+
+
 ## Training on custom dataset
 
 If you want to train CenterTrack on your own dataset, you can use `--dataset custom` and manually specify the annotation file, image path, input resolutions, and number of categories. You still need to create the annotation files in COCO format (referring to the many `convert_X_to_coco.py` examples in `tools`). For example, you can use the following command to train on our [mot17 experiment](experiments/mot17_half_sc.sh) without using the pre-defined mot dataset file:
