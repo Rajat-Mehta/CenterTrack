@@ -18,6 +18,12 @@ image_ext = ['jpg', 'jpeg', 'png', 'webp']
 video_ext = ['mp4', 'mov', 'avi', 'mkv']
 time_stats = ['tot', 'load', 'pre', 'net', 'dec', 'post', 'merge', 'display']
 
+"""
+usage on kitti dataset: 
+python demo.py tracking --load_model ../models/kitti_track.pth --track_thresh 0.1 --demo /raid/Datasets/Radspot/kitti/kitti_tracking/data_tracking_image_2/testing/image_02/0028 --num_classes 3 --dataset kitti_tracking 
+python demo.py tracking,ddd --load_model ../models/kitti_track.pth --track_thresh 0.1 --demo /raid/Datasets/Radspot/kitti/kitti_tracking/data_tracking_image_2/testing/image_02/0028 --num_classes 3 --dataset kitti_tracking 
+"""
+
 def demo(opt):
   os.environ['CUDA_VISIBLE_DEVICES'] = opt.gpus_str
   opt.debug = max(opt.debug, 1)
